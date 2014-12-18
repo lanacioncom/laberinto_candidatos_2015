@@ -579,9 +579,9 @@ d3.politicos = function(containerId,width,partidoDetalle) {
       media = false;
 
       if(d.video){
-        media = '<p class="video-tooltip"><a class="modal-tooltip" href="http://www.youtube.com/embed/' + d.video + '" rel="shadowbox;width=600;height=400" title=" ' +d.epigrafe+ '"><img src="http://img.youtube.com/vi/' + d.video + '/0.jpg" /><span class="expand-tooltip"></span></a></p>';
+        media = '<p class="video-tooltip"><a class="modal-tooltip" href="http://www.youtube.com/embed/' + d.video + '?autoplay=1" rel="shadowbox;width=600;height=500" title=" ' +d.epigrafe+ '"><img src="http://img.youtube.com/vi/' + d.video + '/0.jpg" /><span class="expand-tooltip"></span></a></p>';
       } else if(d.foto) {
-        media = '<p class="foto-tooltip"><a class="modal-tooltip" href="'+BUILD+'data/img/gr/' + d.foto + '" rel="shadowbox;width=600;height=400" title=" ' +d.epigrafe+ '"><img src="'+BUILD+'data/img/ch/' + d.foto + '" /><span class="expand-tooltip"></span></a></p>';
+        media = '<p class="foto-tooltip"><a class="modal-tooltip" href="'+BUILD+'data/img/gr/' + d.foto + '" rel="shadowbox;width=600;height=400" title="' +d.epigrafe+ '"><img src="'+BUILD+'data/img/ch/' + d.foto + '" /><span class="expand-tooltip"></span></a></p>';
       }
 
       html = '';

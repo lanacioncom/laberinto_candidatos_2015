@@ -78,10 +78,44 @@ div.contenedor div.contenidos div.slider-container div.candidatos div.slide div.
    opacity: 1;
 }
 
+
+div.contenedor div.contenidos div.cajaFixed{
+   width: 95%;
+   max-width: 940px;
+   height: 30px;
+   padding: 10px;
+   background-color:#fff;
+   position:fixed; 
+   top:0px;
+   z-index: 900;
+   display: none;
+   border-bottom-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   border:1px solid #dadada;
+   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.19);
+}
+
+div.contenedor div.contenidos div.cajaFixed div.candi{
+   width: 23.5%;
+   min-height: 12px;
+   color:#fff;
+   font-family: Arial, Helvetica, sans-serif;
+   border-radius: 3px;
+   font-size: 13px;
+   font-weight: bold;
+   text-align: center;
+   float:left;
+   margin: 0px 0.5%;
+   padding: 10px 0px;
+   border:1px solid #dadada;
+}
+
+
+
 div.contenedor div.contenidos div.tarjetas-container{
    width:100%;
    height:355px;
-   margin-bottom:10px;
+   margin-bottom:-20px;
 }
 
 
@@ -129,11 +163,17 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.sincard{
 }
 
 div.contenedor div.contenidos div.tarjetas-container div.sincard div.seleccione{
-   width: 90%;
+   width: 78%;
    text-align: center;
    margin:40px auto;
-   color:#aaa;
+   color:#7B7B7B;
    line-height: 1.4;
+   top: 29%;
+   left: 6%;
+   position: absolute;
+   border: 1px solid #E2E2E2;
+   border-radius: 4px;
+   padding: 9px 10px;
 }
 
 div.contenedor div.contenidos div.tarjetas-container div.sincard div.mas{
@@ -144,6 +184,7 @@ div.contenedor div.contenidos div.tarjetas-container div.sincard div.mas{
    position: absolute;
    top:40%;
    left: 30%;
+   display:none;
 }
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.flipped  {
@@ -151,6 +192,11 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.flipped  {
          -moz-transform: rotateY( 180deg );
            -o-transform: rotateY( 180deg );
               transform: rotateY( 180deg );
+     
+}
+
+div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card{
+   overflow: hidden;
 }
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure  {
@@ -158,18 +204,49 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure
    height:315px;
    border-radius:5px;
    overflow: hidden;
-   -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-         -o-backface-visibility: hidden;
-            backface-visibility: hidden;
+   /*-webkit-backface-visibility: hidden !important;
+      -moz-backface-visibility: hidden !important;
+         -o-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+   -webkit-transform-style: preserve-3d;*/
    background-color: #fff;
+   z-index:2000;
 }
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.frente{
    position: relative;
    border-radius:5px;
    overflow: hidden;
+
 }
+
+div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card div.vermas,
+div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card div.vermenos{
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   padding: 0px 5px;
+   font-size: 23px;
+   background: #335577;
+   border-radius: 3px;
+   border: 1px solid #dadada;
+   color: #fff;
+   cursor:pointer;
+   z-index: 1500;
+   font-weight: bold;
+}
+
+div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card div.vermenos{
+   background: #E2E2E2;
+   padding: 0px 10px;
+   font-size: 25px;
+   font-weight: bold;
+   color: #335577;
+   padding-bottom: 3px;
+   padding: 0px 8px;
+   font-size: 21px;
+}
+
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure img{
    margin-top: 20px;
@@ -182,12 +259,16 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure
    top:0px;
    border-radius:5px;
    background: #f5f5f5;
-   -webkit-transform: rotateY( 180deg );
+   overflow: hidden;
+   /*-webkit-transform: rotateY( 180deg );
          -moz-transform: rotateY( 180deg );
            -o-transform: rotateY( 180deg );
               transform: rotateY( 180deg );
+*/
    z-index:2000;
+   display:none;
 }
+
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.twitter{
    width: 90%;
@@ -226,7 +307,7 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure
 }
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio div.texto{
-   width: 75%;
+   width: 85%;
    height: 130px;
    line-height: 1.4;
    overflow: auto;
@@ -235,7 +316,7 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure
 
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.frente div.nom,
 div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.nom{
-   width: 80%;
+   width: 75%;
    height: 30px;
    position: absolute;
    top:10px;
@@ -297,6 +378,22 @@ div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure
    color:#F7931E !important;
 }
 
+.color-blue2{
+   background:#0071BC !important;
+}
+
+.color-green2{
+   background:#7AC943 !important;
+}
+
+.color-purple2{
+   background:#662D91 !important;
+}
+
+.color-orange2{
+   background:#F7931E !important;
+}
+
 /* -------------------- */
 footer {width:100%; height:110px; max-width: 960px; margin:auto;border-top:1px solid #dadada; margin-top: 20px}
 footer section#pie {width: 98%; height:110px; margin:auto;}
@@ -314,6 +411,11 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
 /* ------------------------------ media queries --------------------*/
 
 @media only screen and (max-width: 900px) {
+   div.contenedor div.contenidos div.cajaFixed{
+      width: 100%;
+      left: 0%;
+   }
+
    header {height:130px;}
    header section.cabezal {height:66px;}
    header section.cabezal .buscador {margin-top: 16px; margin-right: 14px; }
@@ -329,6 +431,8 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
    header nav#troncal li .accesoSeccion {padding:0 20px;   }
    header nav#troncal li#unalinea {line-height: 2;   }
    header nav#troncal li.guia-salidas .accesoSeccion {width:50%;}
+
+
 
    /* ///////////////// */
 
@@ -355,11 +459,38 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
 
    }
 
+      div.contenedor div.contenidos div.cajaFixed{
+      width: 97%;
+   }
+
+  
+
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.sincard,
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card,
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure{
+       height: 295px;
+   }
+
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio{
+      width: 88%;
+      height: 196px;
+      overflow: hidden;
+   }
+
+   div.contenedor div.contenidos div.tarjetas-container div.sincard div.seleccione{
+      width: 73%;
+      top: 25%;
+   }
+
    div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure img{
       width: 120%;
       position:absolute;
       left:-5%;
-      bottom: -35px;
+      bottom: -65px;
+   }
+
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras{
+      height: 295px;
    }
 
    div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.frente div.nom, 
@@ -384,7 +515,7 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
    }
 
    div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio{
-      height: 215px;
+      height: 195px;
    }
 
    div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio div.texto{
@@ -401,6 +532,12 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
 
    
 } /* fin 780 */
+
+@media only screen and (max-width: 750px) {
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure img {
+      bottom: -35px;
+   }
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -436,6 +573,8 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
    #contenedor div#nom-especial div.bajada{margin-bottom: 5px;}
 
    #contenedor {padding-left: 5px; padding-right: 5px;}
+
+   
 
    /* FICHAS */
 
@@ -553,6 +692,7 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
    div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio{
       margin: 0px 6px;
       height: 164px;
+      overflow: hidden;
    }
 
    div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio div.edad, div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio div.profesion, div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio div.web, div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card figure.atras div.bio div.texto{
@@ -568,10 +708,21 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
       border-top: 1px solid #D8D8D8;
    }
 
+   div.contenedor div.contenidos div.tarjetas-container div.sincard div.seleccione{
+      width: 71%;
+      top: 9%;
+      left: 6%;
+   }
+
 
 } /* fin 600 */
 
 @media only screen and (max-width: 400px) {
+
+   div.contenedor div.contenidos div.cajaFixed{
+      left: 0%;
+      height: 40px;
+   }
    
 
    /* FICHAS */
@@ -588,6 +739,24 @@ footer .copy span.textoCopy {float:left;display:block;width:324px;height:22px;}
 
    div.contenedor div.contenidos div.slider-container{
       height: 147px;
+   }
+
+   
+
+   div.contenedor div.contenidos div.cajaFixed div.candi{
+      width: 22%;
+      min-height: 25px;
+      margin: -3px 0.5%;
+   }
+
+   div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card div.vermas, div.contenedor div.contenidos div.tarjetas-container div.tarjeta div.card div.vermenos{
+      top: 6px;
+      right: 4px;
+   }
+
+   div.contenedor .reference-text{
+      text-align: center;
+      margin-bottom: 10px;
    }
 
 

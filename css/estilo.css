@@ -7,7 +7,7 @@ body {
 
 div.contenedor {
 	height:auto; 
-	width: 100%;
+	width: 95%;
 	max-width: 960px;
 	margin: 0 auto;
 	padding: 0px 0px;
@@ -673,7 +673,7 @@ path.line-orange {
 /* SHARE */
 div.contenedor .share-links {
 	text-align: right;
-	margin: 10px 0px;
+	margin: 5px 0px;
 	height: 25px;
 	float: right;
 	width: 255px;
@@ -717,7 +717,7 @@ div.contenedor .share-links .minishare-mail {
 
 /* REFERENCES */
 div.contenedor .reference-block {
-	margin: 10px 0px;
+	margin: 19px 0px;
 	text-align: right;
 	display: none;
 }
@@ -733,11 +733,14 @@ div.contenedor .reference-block p{
 
 div.contenedor .reference-text {
 	float: left;
-	display: inline;
-	margin-left: 5px;
 	font-family: Arial;
 	font-size: 12px;
-	margin-top: 5px;
+	font-weight: bold;
+	background-color: #EAF9FF;
+	padding: 9px 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid #dadada
 }
 
 div.contenedor p.reference-black {

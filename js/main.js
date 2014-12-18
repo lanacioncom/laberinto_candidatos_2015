@@ -60,9 +60,9 @@ var candi = []
         App.setSizes();
  
         queue()
-          .defer(d3.csv, BUILD+'data/candidatos.csv?v=7')
-          .defer(d3.csv, BUILD+'data/trayectorias.csv?v=7')
-          .defer(d3.csv, BUILD+'data/partidos.csv?v=7')
+          .defer(d3.csv, BUILD+'data/candidatos.csv?v=10')
+          .defer(d3.csv, BUILD+'data/trayectorias.csv?v=10')
+          .defer(d3.csv, BUILD+'data/partidos.csv?v=10')
           .awaitAll(App.filesLoaded);
  
     };
@@ -200,9 +200,9 @@ var candi = []
         App.$slide.html(App.itemTemplate(App.dataFicha));
         App.$fichas = $('.ficha');
         App.$fichas.on('click',App.clickFicha);
-        App.$fichas.hover(App.mouseEnterFicha,App.mouseLeaveFicha);
+        //App.$fichas.hover(App.mouseEnterFicha,App.mouseLeaveFicha);
  
-        App.$fichas.each(function(){
+       /* App.$fichas.each(function(){
             $(this).qtip({
                 content: '<span>' + $(this).data('tooltip') + '</span>',
                 position: {
@@ -221,7 +221,7 @@ var candi = []
                     classes: 'qtip-candidato'
                 }
             });
-        });
+        });*/
     }
  
     /*SETUP END*/
@@ -242,8 +242,9 @@ var candi = []
         }
     };
  
-    var info = ""
-    var idf = ""
+    var info = "";
+    var fixeds = "";
+    var idf = "";
  
     App.clickFicha = function(){
         var f = $(this);
@@ -269,22 +270,30 @@ var candi = []
     };
 
     function cargamosHash(){
-
         for (var i = 0; i < candi.length; i++) {
+
                         var nombre = canDatos[+candi[i]-1].nombre;
                         $("#tarj"+(+[i]+1)).addClass("cargada").data("id" , +candi[i]);
+                        $("#cand"+(+[i]+1)).data("id" , +candi[i]);
  
                         info += '<div class="card">'
                         info += '<figure class="frente">'
-                        info += '<div class="flipoff"></div>'
-                        info += '<div class="nom">'+canDatos[+candi[i]-1].nombre+'<br><span class="partido">'+canDatos[+candi[i]-1].partido+'</span></div>'
+                        //info += '<div class="flipoff"></div>';
+                        info += '<div class="vermas" title="Ver más">+</div>';
+                        info += '<div class="nom color-'+App.colors[i]+'">'+canDatos[+candi[i]-1].nombre+'<br><span class="partido">'+canDatos[+candi[i]-1].partido+'</span></div>'
                         info += '<div class="cerrar"></div>'
                         info += '<img src="'+canDatos[+candi[i]-1].foto+'" border="0"/></figure>'
                         info += '<figure class="atras">'
-                        info += '<div class="flipon"></div>'
+                        //info += '<div class="flipon"></div>';
+                        info += '<div class="vermenos" title="Ver menos">-</div>';
                         info += '<div class="nom">'+canDatos[+candi[i]-1].nombre+'</div>'
                         info += '<div class="twitter"><a href="http://twitter.com/'+canDatos[+candi[i]-1].twitter+'" target="_blank">'+canDatos[+candi[i]-1].twitter+'</a></div>'
-                        info += '<div class="bio"><div class="edad"><span>Edad: </span>'+canDatos[+candi[i]-1].edad+'</div><div class="profesion"><span>Profesión: </span>'+canDatos[+candi[i]-1].profesion+'</div><div class="web"><span>Web: </span><a href="'+canDatos[+candi[i]-1].web+'" target="_blank">'+canDatos[+candi[i]-1].link+'</a></div>'
+                        info += '<div class="bio"><div class="edad"><span>Edad: </span>'+canDatos[+candi[i]-1].edad+'</div><div class="profesion"><span>Profesión: </span>'+canDatos[+candi[i]-1].profesion+'</div><div class="web"><span>Web: </span>';
+                        if(canDatos[+candi[i]-1].link == "No posee"){
+                          info += 'No posee web</div>';
+                        }else{
+                          info += '<a href="'+canDatos[+candi[i]-1].web+'" target="_blank">'+canDatos[+candi[i]-1].link+'</a></div>';
+                        }
                         info += '<div class="texto">'+canDatos[+candi[i]-1].bio+'</div></div>'
                         info += '<div class="cerrar"></div>'
                         info += '</figure></div>'
@@ -293,47 +302,69 @@ var candi = []
                         $cont_flip.html(info);
                         $(".card", $cont_flip).delay(200).fadeIn(500);
                         App.flipea($cont_flip);
-                        
+
+                        //fixeds += '<div class="candi color-'+App.colors[i]+'2 " data-id="'+candi[i]+'">'+canDatos[+candi[i]-1].nombre+'</div>';
+                        $("#cand"+(+[i]+1)).addClass('color-'+App.colors[i]+'2').html(canDatos[+candi[i]-1].nombre);
+
+
         };
 
-        $(".texto").niceScroll({
-              cursorcolor:"#d7d7d7",
-              cursorborder:"0px solid #fff",
-              cursorwidth: "7px",
-              autohidemode:false,
-              hidecursordelay:0,
-              background:"#f7f7f7"
-        });
+
+       $( window ).scroll(function() {
+          var posicion = $(document).scrollTop();
+          
+          if(posicion > 500 && posicion < 1500){
+            $(".cajaFixed").fadeIn(100);
+          }else{
+            $(".cajaFixed").fadeOut(100);
+          }
+
+       });
+       
+               
     }
  
     function cargamos(){
             var pasa = 0;
             var candidato = App.getDataCandidato(idf);
-
+            
             for (var i = 1; i < 5; i++) {
- 
+  
  
                     if( $("#tarj"+[i]).hasClass( "cargada" ) || pasa == 1 ){
+
                     }else{
                         pasa = 1;
                         info = "";
+
                         var nombre = canDatos[(idf-1)].nombre;
                         $("#tarj"+[i]).addClass("cargada").data("id" , idf);
- 
-                        info += '<div class="card">'
-                        info += '<figure class="frente">'
-                        info += '<div class="flipoff"></div>'
-                        info += '<div class="nom color-'+candidato.color+'">'+canDatos[(idf-1)].nombre+'<br><span class="partido">'+canDatos[(idf-1)].partido+'</span></div>'
-                        info += '<div class="cerrar"></div>'
-                        info += '<img src="'+canDatos[(idf-1)].foto+'" border="0"/></figure>'
-                        info += '<figure class="atras">'
-                        info += '<div class="flipon"></div>'
-                        info += '<div class="nom color-'+candidato.color+'">'+canDatos[(idf-1)].nombre+'</div>'
-                        info += '<div class="twitter"><a href="http://twitter.com/'+canDatos[(idf-1)].twitter+'" target="_blank">'+canDatos[(idf-1)].twitter+'</a></div>'
-                        info += '<div class="bio"><div class="edad"><span>Edad: </span>'+canDatos[(idf-1)].edad+'</div><div class="profesion"><span>Profesión: </span>'+canDatos[(idf-1)].profesion+'</div><div class="web"><span>Web: </span><a href="'+canDatos[(idf-1)].web+'" target="_blank">'+canDatos[(idf-1)].link+'</a></div>'
-                        info += '<div class="texto">'+canDatos[(idf-1)].bio+'</div></div>'
-                        info += '<div class="cerrar"></div>'
-                        info += '</figure></div>'
+     
+                        info += '<div class="card">';
+                        info += '<figure class="frente">';
+                        //info += '<div class="flipoff"></div>';
+                        info += '<div class="vermas" title="Ver más">+</div>';
+                        info += '<div class="nom color-'+candidato.color+'">'+canDatos[(idf-1)].nombre+'<br><span class="partido">'+canDatos[(idf-1)].partido+'</span></div>';
+                        info += '<div class="cerrar"></div>';
+                        info += '<img src="'+canDatos[(idf-1)].foto+'" border="0"/></figure>';
+                        info += '<figure class="atras">';
+                        //info += '<div class="flipon"></div>';
+                        info += '<div class="vermenos" title="Volver">-</div>';
+                        info += '<div class="nom color-'+candidato.color+'">'+canDatos[(idf-1)].nombre+'</div>';
+                        info += '<div class="twitter"><a href="http://twitter.com/'+canDatos[(idf-1)].twitter+'" target="_blank">'+canDatos[(idf-1)].twitter+'</a></div>';
+                        info += '<div class="bio"><div class="edad"><span>Edad: </span>'+canDatos[(idf-1)].edad+'</div><div class="profesion"><span>Profesión: </span>'+canDatos[(idf-1)].profesion+'</div><div class="web"><span>Web: </span>';
+                        if(canDatos[(idf-1)].link == "No posee"){
+                          info += 'No posee web</div>';
+                        }else{
+                          info += '<a href="'+canDatos[(idf-1)].web+'" target="_blank">'+canDatos[(idf-1)].link+'</a></div>';
+                        }
+                        info += '<div class="texto">'+canDatos[(idf-1)].bio+'</div></div>';
+                        info += '<div class="cerrar"></div>';
+                        info += '</figure></div>';
+
+                        //fixeds += '<div class="candi color-'+candidato.color+'2 " data-ids="">'+canDatos[(idf-1)].nombre+'</div>';
+                        //$(".cajaFixed").html(fixeds);
+                        $("#cand"+[i]).addClass('color-'+candidato.color+'2').html(canDatos[(idf-1)].nombre);
                        
                         var $cont_flip = $("#tarj"+[i]);
                         $cont_flip.html(info);
@@ -341,16 +372,21 @@ var candi = []
                         App.flipea($cont_flip);
 
                    };
+
+                   
            };
 
 
-           $(".texto").niceScroll({
-              cursorcolor:"#d7d7d7",
-              cursorborder:"0px solid #fff",
-              cursorwidth: "7px",
-              autohidemode:false,
-              hidecursordelay:0,
-              background:"#f7f7f7"
+
+           $( window ).scroll(function() {
+              var posicion = $(document).scrollTop();
+              
+              if(posicion > 500 && posicion < 1500){
+                $(".cajaFixed").fadeIn(100);
+              }else{
+                $(".cajaFixed").fadeOut(100);
+              }
+
            });
  
  
@@ -366,22 +402,44 @@ var candi = []
            if( $("#tarj"+[i]).data( "id" ) == idf ){
  
                var info = "";
-               info += '<div class="sincard"><div class="seleccione">Elegí a un candidato para que ocupe este espacio</div><div class="mas"></div></div>'
+               info += '<div class="sincard"><div class="seleccione">Hacé click en un candidato para ubicarlo en esta posición</div><div class="mas"></div></div>'
                $("#tarj"+[i]).removeClass( "cargada" ).html(info);
                $("#tarj"+[i]).data("id" , " ");
+
+                $( "#cand"+[i] ).removeClass( "color-blue2" ).html("");
+                $( "#cand"+[i] ).removeClass( "color-green2" )
+                $( "#cand"+[i] ).removeClass( "color-orange2" )
+                $( "#cand"+[i] ).removeClass( "color-purple2" )
  
            };
  
        }
+
+      
  
+   }
+
+   setInterval('scrolling()', 1000);
+
+   function scrolling(){
+      $(".texto").niceScroll({
+                        cursorcolor:"#d7d7d7",
+                        cursorborder:"0px solid #fff",
+                        cursorwidth: "7px",
+                        autohidemode:false,
+                        hidecursordelay:0,
+                        background:"#f7f7f7"
+                  });
    }
  
    
    App.flipea = function($cont_flip){ 
        
-       $(".flipoff, .flipon", $cont_flip).click(function(){
+       $(".vermas, .vermenos", $cont_flip).click(function(){
                 var ids = $(this).parent().parent().parent().attr('id');
-               $( "#"+ids+" .card" ).toggleClass( "flipped" );
+               //$( "#"+ids+" .card" ).toggleClass( "flipped" );
+               $( "#"+ids+" .card .atras" ).fadeToggle(200)
+
        });
  
    }
@@ -390,16 +448,23 @@ var candi = []
        $(".cerrar").click(function(){
             var ids = $(this).parent().parent().parent().attr('id');
             var info = "";
-            info += '<div class="sincard"><div class="seleccione">Seleccione un candidato para agregarlo</div><div class="mas"></div></div>'
+            info += '<div class="sincard"><div class="seleccione">Hacé click en un candidato para ubicarlo en esta posición</div><div class="mas"></div></div>'
             $( "#"+ids ).removeClass( "active, cargada" ).html(info);
             App.removeCandidato($( "#"+ids ).data("id"));
             $( "#"+ids ).data("id" , " ");
 
-            console.log(ids)
+            var id = ids.split("tarj")
+            $( "#cand"+id[1] ).removeClass( "color-blue2" ).html("");
+            $( "#cand"+id[1] ).removeClass( "color-green2" )
+            $( "#cand"+id[1] ).removeClass( "color-orange2" )
+            $( "#cand"+id[1] ).removeClass( "color-purple2" )
  
        });
+
        
    }
+
+
  
    App.onFicha = function(f,color,hover){
        if(hover){
@@ -550,8 +615,7 @@ window.onload = function() {
    var opts = {
        fb:{
            title:'El laberinto político de los candidatos',
-           text:'Visualizá el camino que realizaron los candidatos a través de las últimas elecciones. En qué partido estuvieron y con quiénes. - lanacion.com',
-           img: 'http://interactivos.lanacion.com.ar/candidatos/'+BUILD+'img/screen.png'
+           text:'Visualizá el camino que realizaron los candidatos a través de las últimas elecciones. En qué partido estuvieron y con quiénes. - lanacion.com'
        },
        tw:{
            text:'Conocé el laberinto político de los candidatos',
