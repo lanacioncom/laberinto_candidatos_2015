@@ -37,6 +37,30 @@ var canDatos = [
     },
 
     candidato4 = { 
+        nombre:"Elisa Carrió",
+        partido:"Coalición Cívica",
+        twitter:"@elisacarrio",
+        foto:"img/cand-gr/carrio.jpg",
+        edad:"57 Años",
+        profesion:"Abogada",
+        web:"http://www.elisacarrio.com.ar",
+        link:"elisacarrio.com.ar",
+        bio:"Nació y creció en Chaco. Se recibió de abogada en la Universidad Nacional del Nordeste. Trabajó brevemente en la justicia y luego inició su carrera política desde el radicalismo."
+    },
+
+    candidato5 = { 
+        nombre:"Ernesto Sanz",
+        partido:"UCR",
+        twitter:"@SanzErnesto",
+        foto:"img/cand-gr/sanz.jpg",
+        edad:"57 Años Años",
+        profesion:"Abogado",
+        web:"http://www.ernestosanz.org.ar",
+        link:"ernestosanz.org.ar",
+        bio:"Nacido en San Rafael, Mendoza, se formó como abogado en la Universidad Nacional del Litoral. Fue presidente de la Juventud Radical en San Rafael, en sus inicios en la política."
+    },
+
+    candidato6 = { 
         nombre:"Florencio Randazzo",
         partido:"FPV",
         twitter:"@RandazzoF",
@@ -46,30 +70,6 @@ var canDatos = [
         web:"http://www.florenciorandazzo.com.ar",
         link:"florenciorandazzo.com.ar",
         bio:"Oriundo de Chivilcoy, realizó sus estudios secundarios en la ENET Nº 1 Mariano Moreno, donde comenzó a militar en política. Se graduó como contador público en la UBA."
-    },
-
-    candidato5 = { 
-        nombre:"Julio Cobos",
-        partido:"UNEN",
-        twitter:"@juliocobos",
-        foto:"img/cand-gr/cobos.jpg",
-        edad:"59 Años",
-        profesion:"Ingeniero",
-        web:"#",
-        link:"No posee",
-        bio:"Nació en la ciudad de Godoy Cruz, Mendoza. Cursó la secundaria en el Liceo Militar General Espejo y se graduó en la UTN de Mendoza, donde tiempo después fue decano."
-    },
-
-    candidato6 = { 
-        nombre:"Hermes Binner",
-        partido:"UNEN",
-        twitter:"@HermesBinner",
-        foto:"img/cand-gr/binner.jpg",
-        edad:"71 Años",
-        profesion:"Médico",
-        web:"http://www.hermesbinner.com.ar",
-        link:"hermesbinner.com.ar",
-        bio:"Nació en Rafaela, Santa Fe. Desde su adolescencia militó en el socialismo. Se graduó en la Universidad Nacional de Rosario como médico, especializado en anestesiología."
     },
 
     candidato7 = { 
@@ -85,29 +85,27 @@ var canDatos = [
     },
 
     candidato8 = { 
-        nombre:"Elisa Carrió",
-        partido:"Coalición Cívica (alejada de la mesa de UNEN)",
-        twitter:"@elisacarrio",
-        foto:"img/cand-gr/carrio.jpg",
-        edad:"57 Años",
-        profesion:"Abogada",
-        web:"http://www.elisacarrio.com.ar",
-        link:"elisacarrio.com.ar",
-        bio:"Nació y creció en Chaco. Se recibió de abogada en la Universidad Nacional del Nordeste. Trabajó brevemente en la justicia y luego inició su carrera política desde el radicalismo."
+        nombre:"Julio Cobos",
+        partido:"UNEN",
+        twitter:"@juliocobos",
+        foto:"img/cand-gr/cobos2.jpg",
+        edad:"59 Años",
+        profesion:"Ingeniero",
+        web:"#",
+        link:"No posee",
+        bio:"Nació en la ciudad de Godoy Cruz, Mendoza. Cursó la secundaria en el Liceo Militar General Espejo y se graduó en la UTN de Mendoza, donde tiempo después fue decano."
     },
-
 
     candidato9 = { 
-        nombre:"Ernesto Sanz",
+        nombre:"Hermes Binner",
         partido:"UNEN",
-        twitter:"@SanzErnesto",
-        foto:"img/cand-gr/sanz.jpg",
-        edad:"57 Años Años",
-        profesion:"Abogado",
-        web:"http://www.ernestosanz.org.ar",
-        link:"ernestosanz.org.ar",
-        bio:"Nació y creció en Chaco. Se recibió de abogada en la Universidad Nacional del Nordeste. Trabajó brevemente en la justicia y luego inició su carrera política desde el radicalismo."
-    },
-
+        twitter:"@HermesBinner",
+        foto:"img/cand-gr/binner2.jpg",
+        edad:"71 Años",
+        profesion:"Médico",
+        web:"http://www.hermesbinner.com.ar",
+        link:"hermesbinner.com.ar",
+        bio:"Nació en Rafaela, Santa Fe. Desde su adolescencia militó en el socialismo. Se graduó en la Universidad Nacional de Rosario como médico, especializado en anestesiología."
+    }
     
 ]

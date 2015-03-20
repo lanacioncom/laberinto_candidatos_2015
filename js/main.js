@@ -60,9 +60,9 @@ var candi = []
         App.setSizes();
  
         queue()
-          .defer(d3.csv, BUILD+'data/candidatos.csv?v=10')
-          .defer(d3.csv, BUILD+'data/trayectorias.csv?v=10')
-          .defer(d3.csv, BUILD+'data/partidos.csv?v=10')
+          .defer(d3.csv, BUILD+'data/candidatos.csv?v=16')
+          .defer(d3.csv, BUILD+'data/trayectorias.csv?v=16')
+          .defer(d3.csv, BUILD+'data/partidos.csv?v=16')
           .awaitAll(App.filesLoaded);
  
     };
